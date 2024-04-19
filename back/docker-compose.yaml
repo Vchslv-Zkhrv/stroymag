@@ -1,0 +1,43 @@
+services:
+
+  nginx:
+    restart: always
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/app
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - stroymag_back
+      - stroymag_common
+    hostname: nginx
+
+  php:
+    restart: always
+    build:
+      context: ./docker/php
+    volumes:
+      - ./app:/var/www/app
+    networks:
+      - stroymag_back
+      - stroymag_common
+    hostname: php
+
+  composer:
+    restart: no
+    image: composer:2
+    volumes:
+      - ./app:/app
+
+
+
+networks:
+
+  stroymag_back:
+    driver: bridge
+
+  stroymag_common:
+    external: true

@@ -1,0 +1,14 @@
+{
+    "projectName": "stroymag",
+    "telegram": {
+        "token": "",
+        "chatIds": [
+        ]
+    },
+    "rabbit": {
+        "host": "rabbitmq",
+        "port": 5432,
+        "user": "",
+        "password": ""
+    }
+}

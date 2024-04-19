@@ -1,0 +1,38 @@
+services:
+
+  redis:
+    image: redis
+    restart: always
+    hostname: redis
+    networks:
+      - stroymag_common
+
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    restart: always
+    hostname: rabbitmq
+    ports:
+      - "8082:15672"
+    networks:
+      - stroymag_common
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+
+  mysql:
+    image: mysql:8
+    restart: always
+    hostname: mysql
+    command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
+    volumes:
+      - ./conf/db/db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./conf/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "8081:3306"
+    networks:
+      - stroymag_common
+
+
+
+networks:
+  stroymag_common:
+    driver: bridge
