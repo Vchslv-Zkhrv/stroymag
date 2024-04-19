@@ -6,32 +6,27 @@ I faced with problems when learning Symfony, so I decided to create a simple pro
 ## Packages
 
 
-#### Back
+### Back
 
 Stands for *backend*. The main target
 
------
-#### Common
+### Common
 
 Database, queues, redis
 
------
-#### Docs
+### Docs
 
 Project documentation
 
------
-#### Front
+### Front
 
 Stands for *frontend*
 
------
-#### Media
+### Media
 
 Project media, download by this link -> ....
 
------
-#### Parsers
+### Parsers
 
 Parses hardware stores websites
 
