@@ -3,7 +3,7 @@ build:
 	docker compose build
 	docker compose run composer install
 	chmod 777 -R app/
-	cp app/config/config.template.json app/config/config.json
+	cp app/config/config.example.json app/config/config.json
 	cp app/.env.local.example app/.env.local
 	@echo "\e[1;37m\e[44m                                                                    \e[0m"
 	@echo "\e[1;37m\e[44m  Update app/config/config.json and app/.env.local to finish setup  \e[0m"
